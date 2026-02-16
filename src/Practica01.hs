@@ -14,7 +14,6 @@ data Shape = Circle Float | --representa el radio
 area :: Shape -> Float
 area = undefined
 
-
 --Funcion que calcula el perimetro de las figuras
 perimeter :: Shape -> Float
 perimeter = undefined
