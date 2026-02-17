@@ -12,12 +12,20 @@ data Shape = Circle Float | --representa el radio
 
 --Funcion que calcula el area de las figuras
 area :: Shape -> Float
-area = undefined
+area (Circle r) = pi * r * r
+area (Square s) = s * s
+area (Rectangle b h) = b * h
+area (Triangle s) = (sqrt 3 / 4) * s * s
+area (Trapeze b1 b2 h) = ((b1 + b2) / 2) * h    
+
 
 --Funcion que calcula el perimetro de las figuras
 perimeter :: Shape -> Float
-perimeter = undefined
-
+perimeter (Circle r) = 2 * pi * r
+perimeter (Square s) = 4 * s
+perimeter (Rectangle b h) = 2 * (b + h)
+perimeter (Triangle s) = 3 * s
+perimeter (Trapeze b1 b2 h) = b1 + b2 + 2 * sqrt (h * h + ((b1 - b2) / 2) * ((b1 - b2) / 2))
 
 --Ejercicio 2 (Les toca arreglar el sinonimo)
 type Point = Shape
