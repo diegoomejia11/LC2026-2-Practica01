@@ -6,6 +6,7 @@ import Test.Hspec
 import Practica01
 import Test.Hspec.Runner
 
+
 main :: IO ()
 main = hspecWith defaultConfig specs
 
