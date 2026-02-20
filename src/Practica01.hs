@@ -73,7 +73,6 @@ conjuntoPotencia [] =[[]]
 -- Genera todas las listas que contienen a x y lo concatenamos con las listas que no contienen a x como elemento
 conjuntoPotencia (x:xs) = [x:ys| ys <- conjuntoPotencia xs] ++ conjuntoPotencia xs 
 
-
 --conjuntoPotencia = 
 --ARBOLES
 
@@ -84,3 +83,5 @@ data OneTwoTree a = Undefinedd
 --Ejercicio 2
 suma :: OneTwoTree Int -> Int
 suma = undefined
+
+-- Commit jala?
