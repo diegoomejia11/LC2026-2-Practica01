@@ -92,4 +92,4 @@ data OneTwoTree a
 -- Ejercicio 2
 suma :: OneTwoTree Int -> Int
 suma = undefined
--- No se puede usar last en el conjunto de listas
+-- No se puede usar last en el conjunto de listas ..
