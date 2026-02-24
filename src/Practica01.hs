@@ -11,12 +11,7 @@ data Shape = Circle Float | --representa el radio
             deriving (Show)
 
 --Funcion que calcula el area de las figuras
-area :: Shape -> Float
-area (Circle r) = pi * r * r
-area (Square s) = s * s
-area (Rectangle b h) = b * h
-area (Triangle s) = (sqrt 3 / 4) * s * s
-area (Trapeze b1 b2 h) = ((b1 + b2) / 2) * h    
+area :: undefined
 
 --Funcion que calcula el perimetro de las figuras
 perimeter :: Shape -> Float
@@ -78,10 +73,9 @@ conjuntoPotencia (x:xs) = [x:ys| ys <- conjuntoPotencia xs] ++ conjuntoPotencia 
 
 --Implementacion
 
-data OneTwoTree a = Undefinedd
+data OneTwoTree a = Undefined
 
 --Ejercicio 2
 suma :: OneTwoTree Int -> Int
 suma = undefined
 
--- Commit jala?
