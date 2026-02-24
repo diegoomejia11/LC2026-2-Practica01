@@ -25,7 +25,7 @@ perimeter (Circle r) = 2 * pi * r
 perimeter (Square s) = 4 * s
 perimeter (Rectangle b h) = 2 * (b + h)
 perimeter (Triangle s) = 3 * s
-perimeter (Trapeze b1 b2 h) = b1 + b2 + 2 * sqrt (h * h + ((b1 - b2) / 2) * ((b1 - b2) / 2))
+perimeter (Trapeze b1 b2 h) = 2 * (sqrt (((b1 - b2) / 2) ** 2 + h ** 2)) + b1 + b2
 
 type Point = (Float, Float)
 
@@ -63,21 +63,35 @@ houseCost :: Haskellium -> Float
 houseCost h = case houseShape h of
   Square s -> 2 * area (Square s)
   Rectangle b height -> 1.875 * area (Rectangle b height)
-  _shape -> 0 --lo use con el _ porque no se me ocurrio como usar los otros casos y haskell me marcaba error
--- Funcion para calcular el tiempo que le toma a un Haskellium para llegar a su trabajo
+  _shape -> 0 -- lo use con el _ porque no se me ocurrio como usar los otros casos y haskell me marcaba error
+  -- Funcion para calcular el tiempo que le toma a un Haskellium para llegar a su trabajo
+
 timeToWork :: Haskellium -> Float
 timeToWork h = from0 (location h) / 30
 
 -- LISTAS Y FUNCIONES
 -- Ejercicio 1
 palindromo :: String -> Bool
-palindromo = undefined
+palindromo [] = True
+palindromo [_] = True
+-- comparamos la cabeza de la cadena con la cola, usamos && para que
+-- de ser igual la cabeza y la cola se llama a la función nuevamente
+-- en la sig llamada comienza desde el siguiente elemento del string del inicio y el final
+palindromo xs = (head xs == last xs) && palindromo (init (tail xs))
+
 -- Ejercicio 2
 myFoldr :: (a -> b -> b) -> b -> [a] -> b
-myFoldr = undefined
+myFoldr _ z [] = z
+-- Ocupamos una función, un valor inicial(base) y una lista sobre la cual trabajaremos
+-- Se ejecuta la función en el primer elemento y se realiza la llamada recursiva para el resto
+myFoldr f z (x : xs) = f x (myFoldr f z (xs))
+
 -- Ejercicio 3
 conjuntoPotencia :: [a] -> [[a]]
-conjuntoPotencia = undefined
+-- El conjuto potencia de la lista vacia es una lista con la lista vacia como elemento
+conjuntoPotencia [] = [[]]
+-- Genera todas las listas que contienen a x y lo concatenamos con las listas que no contienen a x como elemento
+conjuntoPotencia (x : xs) = [x : ys | ys <- conjuntoPotencia xs] ++ conjuntoPotencia xs
 
 -- ARBOLES
 
@@ -91,5 +105,6 @@ data OneTwoTree a
 
 -- Ejercicio 2
 suma :: OneTwoTree Int -> Int
-suma = undefined
--- No se puede usar last en el conjunto de listas ..
+suma Void = 0
+suma (Node x t) = x + suma t
+suma (Branch x t1 t2) = x + suma t1 + suma t2
